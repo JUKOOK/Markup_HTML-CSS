@@ -1,0 +1,296 @@
+@charset="UTF-8";
+/* 12단위 그리드 시스템 제작 
+   column을 %으로 할 때에는 gutter을 margin이 아닌 padding으로 줘야한다.
+  : gutter / column / gutter = 10 / 1/12단위 / 10   */
+
+/* reset + common setting */
+
+* {
+    box-sizing: border-box;
+    margin : 0px;
+    padding : 0px;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Spoqa han Sans', sans-serif;
+    line-height: 1.5;
+    color:#1d1d1d;
+}
+
+h2 {
+    margin-bottom: 2.5rem;    
+}
+
+a {
+    text-decoration: none;
+    color:inherit;
+}
+
+li {
+    list-style-type: none;
+    padding : 0;
+}
+
+/* header : header의 경우 스크린 크기 상관 없이 width 전체를 활용하는 background img를 사용하고 
+            내용은 container 속에서 조정되게 한다. */
+.header {
+/* 높이는 전체 스크린의 반을 차지시킨다.  -> 50vh    */
+    height : 50vh;
+    background-image: url("./스코틀랜드.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.header .container {
+    color: #fff;
+    text-align: right;
+/*  모든 스크린 화면에서 h1과 p를 함께 오른쪽 아래 배치하기 위해 position : absoulte을 사용한다.    */
+    position : absolute;
+    bottom :0%;
+	right : 0%;
+
+}
+
+.header-content span {
+    font-weight: 800;
+}
+
+
+/* Grid system 
+    container는 960px 이전에는 화면 전체의 width 그대로 차지
+    600px 이하 화면은 양쪽에 padding만 10px
+    960px보다 큰 화면은 960px 고정하되 가운데 배치
+    breakpoint마다 배경색 변화를 주어 알기 편하게 한다.
+*/
+
+/* 600px 이하, 모바일 스크린 먼저, 모바일에서는 Grid System 필요 없음*/
+@media screen and (max-width : 600px) {
+    .container {
+        width:100%;
+    	padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* 600px 이상부터, 타블렛 */
+@media screen and (min-width : 600px) {
+    .container {
+        width:100%;
+    }
+    
+    [class*="col-"] {
+        float : left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .row::after {
+        content: '';
+        display:block;
+        clear:both;
+    }
+    
+    .col-1 { width : 8.33%;  }
+    .col-2 { width : 16.67%; }
+    .col-3 { width : 25%; }
+    .col-4 { width : 33.33%; }
+    .col-5 { width : 41.67%; }
+    .col-6 { width : 50%; }
+    .col-7 { width : 58.33%; }
+    .col-8 { width : 66.67%; }
+    .col-9 { width : 75%; }
+    .col-10 { width : 83.33%; }
+    .col-11 { width : 91.67%; }
+    .col-12 { width : 100%; }
+    
+    .push-1 {
+        position: relative;
+        left : 8.33%;
+    }
+    
+    .pull-1 {
+        position: relative;
+        right : 8.33%;
+    }
+}
+
+/* 960px 이상부터, 와이드 스크린 */
+@media screen and (min-width : 960px) {
+    .container {
+        width : 960px;
+        margin : 0 auto;
+    }
+}
+
+/* section : eat */
+/* 전체적인 요소 : eat-item */
+
+.eat{
+    margin-bottom: 60px;
+}
+
+.eat-item a {
+    display: block;
+/*  width는 col-에서 지정한다.   eat-item의 높이는 기본 글자크기*1.6의 16배  -> 16*1.6rem  */
+    height: 25.6rem;
+    border-radius: 4px;
+/*    이미지의 가운데 부분이 보이게 한다.  */
+    background-position: center center;
+/* 100% 100%는 Gradient용, cover은 url 이미지용 */
+    background-size: 100% 100%, cover; 
+}
+
+/*  사진에 살짝 gradient 효과를! : 아래쪽으로, 처음엔 투명하되 나중엔 opacity가 낮은 느낌=약간 불투명하게     */
+.eat-item:nth-child(1) a {
+    background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4)),url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQggLRw1J3FmR5K8Oy9LnnNgoZD8y8Mzsm0NRgUncxzFl0sn2j1")
+}
+
+.eat-item:nth-child(2) a{
+    background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4)), url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6vq4X8nWol74NCvvyTrJs866-acAI1EForQvPA2TImmzy1aAz")
+}
+
+.eat-item:nth-child(3) a{
+    background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4)), url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4K29Vt10AN7pm8zlV9bacMz_pbIik0fgnaRxyXS73krttrfq5Gg")
+}
+    
+    
+/* eat-content는 flex로 세로 배치를 하고, 내용을 맨 아래로부터 배치한다 */
+.eat-content {
+    height: 25.6rem;
+    padding : 1rem;
+    color : #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.eat-item {
+    margin-bottom: 1.6rem; /* 모바일 화면에서 1단 구성 */
+}
+/* 600px 이상에서 eat-item은 가로 배치이므로 margin-bottom을 0으로 한다*/
+@media screen and (min-width : 600px) {
+    .eat-item {
+        margin-bottom: 0;
+    }
+}
+    
+/* section : video */    
+
+/* media container : 영상의 가로*세로 비율에 맞게 틀을 만들고, iframe이 absolute position을 가질 수 있게 relative position을 갖는다.
+   width, height 설정 : height의 경우 단순히 부모 요소의 height 기준이 아니기에 이런 경우 height는 0으로 만들고 부모 요소를 기준으로 잡는 padding-bottom을 사용한다.                       + 9/16*100 = 56.25 */
+.media-container {
+    position: relative;
+    width : 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin-bottom: 60px;
+}
+
+/* 부모 요소가 16:9 모양의 틀을 만들었으니 이 녀석을 기준 삼아 받아온 비디오를 부묘 요소에 꽉 차게 담을 수 있게 한다.*/
+.media-container iframe {
+    position: absolute;
+    width : 100%;
+    height: 100%;
+    top :0;
+    left:0;
+}
+
+/* section : gallery */
+
+/* gallery items : grid 적용 */
+
+.gallery-item {
+/*  width는 col-에서 지정한다.  gallery-item의 높이는 기본 글자크기*1.6의 13배 -> 13*1.6rem */
+    height: 20.8rem;
+/*   gallery-item의 경우 스크린 크기 상관 없이 아래에 margin을 1폰트 단위씩 준다. */
+    margin-bottom: 1.6rem; 
+/* 글 스타일링 */
+    color : #fff;
+    font-size: 1.6rem;
+}
+
+.gallery-img {
+    width : 100%;
+    height: 20.8rem;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center center;
+/* gallery-item class의 글을 아래로 내리기 위함. 요소가 단 한개 뿐인지라 부모 요소를 row로 만들 필요가 없다. */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.gallery-item:nth-child(1) .gallery-img {
+    background-image: url("1.jpg");
+}
+.gallery-item:nth-child(2) .gallery-img {
+    background-image: url("2.jpg");
+}
+.gallery-item:nth-child(3) .gallery-img {
+    background-image: url("3.jpg");
+}
+.gallery-item:nth-child(4) .gallery-img {
+    background-image: url("4.jpg");
+}
+.gallery-item:nth-child(5) .gallery-img {
+    background-image: url("5.jpg");
+}
+.gallery-item:nth-child(6) .gallery-img {
+    background-image: url("7.jpg");
+}
+.gallery-item:nth-child(7) .gallery-img {
+    background-image: url("6.jpg");
+}
+
+/* footer */
+
+/* 모바일에서는 grid가 적용되지 않으므로 사이즈를 조정한다.*/
+
+.footbar {
+    width : 100%;
+    color : #fff;
+    background-color : #000;
+    margin-top: 50px;
+    padding : 1.5rem 0;
+    position: relative;
+    right : 0;
+    bottom : 0;
+}
+
+.footbar > h2 {
+    margin-left: 1rem;
+    text-align: left;
+}
+
+.footbar > p {
+    margin-right: 1rem;
+    text-align: right;
+    font-size: 1.5rem;
+}
+
+@media screen and (min-width : 600px) {
+    .footbar {
+        padding : 2.5rem 0;
+    }
+
+    .footbar > h2 {
+        margin-left: 0;
+    }
+
+    .footbar > p {
+        margin-right: 0;
+        font-size: 2rem;
+        line-height: 8rem;
+    }
+}
+
+
+    
+    
+    
+    
+    

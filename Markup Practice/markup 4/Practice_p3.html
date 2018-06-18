@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- 12단위 그리드 시스템 제작 
+   column을 %으로 할 때에는 gutter을 margin이 아닌 padding으로 줘야한다.
+  : gutter / column / gutter = 10 / 1/12단위 / 10 -->
+<html lang="ko">
+<head>
+<!-- 이 meta는 phone 같은 디바이스에서도 미디어 쿼리가 먹도록 한다. 중요한 meta문!!! -->
+	<meta name="viewport" content="width=device-width">
+	<meta charset="UTF-8">
+	<title> Practice 3 </title>
+	<link rel="stylesheet" href="stylesheet_p3.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title pull-1">영국+스코틀랜드,<br>어디까지 가봤니?</h1>
+            <p class="header-content pull-1"><span>10박 12일 쏠고퀄 영국 여행!</span><br>자랑 이야기</p>
+        </div>
+    </header>
+    <section class="eat">
+        <div class="container">
+            <h2 class="section-title">쉐어 유어 존맛탱스</h2>
+            <ul class="eat-items row">
+<!-- li들은 각각 col-4 클래스 적용(공백으로 클래스 구분한다.) 그러므로 부모인 ul은 row 클래스를 적용한다. -->
+                <li class="eat-item col-4">
+                    <a href="#">
+                        <div class="eat-content">
+                            <h4 class="eat-content-title">우연히 만난<br>존맛탱 치킨버거</h4>
+                            <p class="eat-content-tag">@Borough Market</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="eat-item col-4">
+                    <a href="#">
+                        <div class="eat-content">
+                            <h4 class="eat-content-title">염소치즈파이라니<br>소리 질러!!</h4>
+                            <p class="eat-content-tag">@Coven Garden</p>
+                        </div>
+                    </a>
+                </li>
+                <li class="eat-item col-4">
+                    <a href="#">
+                        <div class="eat-content">
+                            <h4 class="eat-content-title">베이글 속<br>설렁탕 고기</h4>
+                            <p class="eat-content-tag">@Brick Lane</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="video">
+        <div class="container">
+            <h2 class="section-title">자랑은 찰지게,</h2>
+            <div class="col-12">
+                <div class="media-container">
+<!-- 특이사항 :  
+     iframe에 미디어를 웹에서 가져온 경우 반드시 이 녀석만의 부모가 되는 div를 만든다(media-container) css 스타일링으로 틀을 만드는데 이 부모 요소에 적용시킨다. -->
+                    <iframe src="http://player.vimeo.com/video/197771102" frameborder="0" class="media-5625" width="640" height="460" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">사진은 찰칵찰칵</h2>
+            <ul class="gallery-items row">
+<!-- li들은 각각 col-4 클래스 적용(공백으로 클래스 구분한다.) 그러므로 부모인 ul은 row 클래스를 적용한다. -->
+                <li class="gallery-item col-4">
+                    <p class="gallery-img">화려한 국화~</p>
+                </li>
+                <li class="gallery-item col-4">
+                    <p class="gallery-img">사막!</p>
+                </li>
+                <li class="gallery-item col-4">
+                    <p class="gallery-img">수국이란 꽃이네</p>
+                </li>
+                <li class="gallery-item col-8">
+                    <p class="gallery-img">해파리..</p>
+                </li>
+                <li class="gallery-item col-4">
+                    <p class="gallery-img">귀여운 코알라</p>
+                </li>
+                <li class="gallery-item col-4">
+                    <p class="gallery-img">화사한 튤립</p>
+                </li>
+                <li class="gallery-item col-8">
+                    <p class="gallery-img">멋스런 등대</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+	<footer class="footbar row">
+		<h2 class="push-1 col-8"> 다음 여행지는 <br> 미얀마 너로 정했다! </h2>
+		<p class="pull-1 col-4"> 후원은 토스로! </p>
+	</footer>   
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+@charset="UTF-8";
+/*가로 1080px을 기준으로 12단위 그리드 시스템 제작 contain 1080px
+  : 1 단위 90px, gutter / column / gutter : 10 / 70 / 10   */
+ 
+
+* {
+/*	box-sizing: border-box;*/
+/*	border : 1px dashed black; */
+/*	margin : 0px;
+/*	padding : 0px;*/
+}
+
+/*
+   container : 전체 그리드 시스템의 할아버지 요소. 
+   아래 column들이 모두 float되므로 자식 요소의 width가 0이 될 예정.
+   따라서 width를 미리 설정해야 한다.
+*/
+.container {
+	width : 1080px;
+	margin : 0 auto;
+	background-color : #E9FF3C;
+}
+
+/*
+   row : 전체 그리드 시스템의 부모 요소. 
+   아래 column들이 모두 float되므로 이 row를 clear 상태로 만들어
+   column들간의 공간 침범을 미리 방지한다.
+*/
+.row::after {
+	content : '';
+	display : block;
+	clear : both;
+}
+
+/* column : 그리드 시스템의 실제 컨텐츠가 담길 float 박스들
+.col-1 {
+	 float : left;
+	 - 10 / 70 / 10 구조, 높이는 임의 설정 
+	 width : 70px;
+	 margin-left : 10px;
+	 margin-right : 10px;
+	 margin-bottom : 10px; 
+	 height : 40px;
+	 background-color : #2d2a4f;
+	 color : #fff;
+}
+
+.col-2 {
+	 float : left;
+	 - 10 / 160 / 10 구조, 높이는 임의 설정 
+	 width : 160px;
+	 margin-left : 10px;
+	 margin-right : 10px;
+	 margin-bottom : 10px;
+	 height : 40px;
+	 background-color : #2d2a4f;
+	 color : #fff;
+}
+
+.col-3 {
+	 float : left;
+	 - 10 / 250 / 10 구조, 높이는 임의 설정 
+	 width : 250px;
+	 margin-left : 10px;
+	 margin-right : 10px;
+	 margin-bottom : 10px;
+	 height : 40px;
+	 background-color : #2d2a4f;
+	 color : #fff;
+} */
+
+
+/* col- commons
+   위의 형태에서 commons를 모은다.(width 뺀 나머지) */
+   
+[class*="col-"] { /* 클래스 속성을 갖는 것 중 그 이름에 "col-"이 있는 경우 */
+	 float : left;
+	 margin-left : 10px;
+	 margin-right : 10px;
+	 margin-bottom : 10px;
+	 height : 40px;
+	 background-color : #2d2a4f;
+	 color : #fff;
+}
+
+.col-1 { width : 70px;  }
+.col-2 { width : 160px; }
+.col-3 { width : 250px; }
+.col-4 { width : 340px; }
+.col-5 { width : 430px; }
+.col-6 { width : 520px; }
+.col-7 { width : 610px; }
+.col-8 { width : 700px; }
+.col-9 { width : 790px; }
+.col-10 { width : 880px; }
+.col-11 { width : 970px; }
+.col-12 { width : 1060px; }
+
+[class*="push-"], [class*="pull-"] { 
+/* 클래스 속성을 갖는 것 중 그 이름에 "push-"가 있거나 "pull-"이 이쓴ㄴ 경우 */ 
+/* 자기의 원래 위치 기준으로 하여 오른쪽으로 push 또는 왼쪽으로 pull */
+	position : relative;
+}
+
+.push-1 { left : 90px;  }
+.push-2 { left : 180px; }
+.push-3 { left : 270px; }
+.push-4 { left : 360px; }
+.push-5 { left : 450px; }
+.push-6 { left : 540px; }
+.push-7 { left : 630px; }
+.push-8 { left : 720px; }
+.push-9 { left : 810px; }
+.push-10 { left : 900px; }
+.push-11 { left : 990px; }
+.push-12 { left : 1080px; }
+
+.pull-1 { right : 90px;  }
+.pull-2 { right : 180px; }
+.pull-3 { right : 270px; }
+.pull-4 { right : 360px; }
+.pull-5 { right : 450px; }
+.pull-6 { right : 540px; }
+.pull-7 { right : 630px; }
+.pull-8 { right : 720px; }
+.pull-9 { right : 810px; }
+.pull-10 { right : 900px; }
+.pull-11 { right : 990px; }
+.pull-12 { right : 1080px; }
+/* push-12, pull-12는 사실상 필요 없음 */
+
+
+
+

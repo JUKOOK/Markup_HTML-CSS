@@ -1,0 +1,255 @@
+@charset="UTF-8";
+/* 가로 1080px을 기준으로 12단위 그리드 시스템 제작 
+   column을 %으로 할 때에는 gutter을 margin이 아닌 padding으로 줘야한다.
+  : gutter / column / gutter = 10 / 1/12단위 / 10 
+   BreakPoint : 600px, 1080px -> container 1080px 고정 */
+
+/* Reset, Base setting*/
+
+* {
+	box-sizing: border-box;
+/*	border : 1px dashed black;*/
+	margin : 0px;
+	padding : 0px;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+/* Base color */
+
+body {
+    background-color: #e3e3e3;    
+}
+
+nav, footer {
+    background-color: #fff;    
+}
+
+a {
+    text-decoration: none;
+    color:inherit;
+}
+
+/* Media Query - Container */
+
+@media screen and (max-width : 600px) {
+    .container {
+        width:100%;
+    	padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* 600px 이상부터, 타블렛 */
+@media screen and (min-width : 600px) {
+    .container {
+        width:100%;
+    }
+    
+    [class*="col-"] {
+        float : left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .row::after {
+        content: '';
+        display:block;
+        clear:both;
+    }
+    
+    .col-1 { width : 8.33%;  }
+    .col-2 { width : 16.67%; }
+    .col-3 { width : 25%; }
+    .col-4 { width : 33.33%; }
+    .col-5 { width : 41.67%; }
+    .col-6 { width : 50%; }
+    .col-7 { width : 58.33%; }
+    .col-8 { width : 66.67%; }
+    .col-9 { width : 75%; }
+    .col-10 { width : 83.33%; }
+    .col-11 { width : 91.67%; }
+    .col-12 { width : 100%; }
+    
+/*  nbg 쪽 list 이동  */
+    .push-05 {
+        position: relative;
+        left : 5%;
+    }
+}
+
+/* 10800px 이상부터, 와이드 스크린 */
+@media screen and (min-width : 1080px) {
+    .container {
+        width : 1080px;
+        margin : 0 auto;
+    }
+}
+
+/* Header */
+
+.logo {
+    display: block;
+    width : 380px;
+    height: 110px;
+    margin : 20px 10px;
+}
+
+/* nav */
+
+.ngb ul {
+    height : 55px;
+}
+
+.ngb ul > li {
+    height: 49px;
+    margin : 3px 3px; 
+    text-align: center;
+    line-height: 49px;
+}
+
+.ngb ul > li.hidden {
+    color: #fff;
+}
+
+.ngb ul > li.active {
+    background-color: darkgoldenrod;
+    color: #fff;
+}
+
+.ngb ul > li.hover:hover {
+    background-color: burlywood;
+    opacity: 0.8;
+    color: #fff;
+}
+
+@media screen and (max-width : 600px) {
+    .ngb ul.row {
+        display : flex;
+        flex-direction: row;
+        flex-wrap : nowrap;
+        justify-content : flex-end;
+    }
+    
+    .ngb ul > li {
+        width : 18%;
+        height: 49px;
+        margin : 3px 3px; 
+        text-align: center;
+        line-height: 49px;
+    }
+}
+
+
+
+/* main */
+
+section {
+    height: 75vh;
+}
+
+.upper-para {
+    border-bottom: 4px solid #fff;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.down-para {
+    border-top: 4px solid #fff;
+    padding-left: 20px;
+}
+
+/* main : media query, wide : use flex */
+@media screen and (min-width : 600px) {
+    .main {
+        height: 90vh;
+        display : flex;
+        flex-direction: row;
+        flex-wrap : nowrap;
+        justify-content : space-between;
+    }
+    
+    section.container > div {
+        padding-right: 0px;
+    }
+
+    .main-item {
+        margin: 8vh 0;
+        height: 550px;
+        border : 4px solid #fff;
+    }
+    
+
+    .main_para {
+        width : 250px;
+        height: 70px;
+        background-color:#C98F5C;
+        color: #fff;
+        line-height: 65px;
+    }
+    .main_img > img {
+        display: block;
+        width : 250px;
+        height: 470px;
+    }
+}
+
+/* main : Media Query : mobile*/
+@media screen and (max-width : 1000px) {
+    .main {
+        height: 60vh;
+        display : flex;
+        flex-direction: row;
+        flex-wrap : nowrap;
+        justify-content : space-between;
+    }
+    
+    .main ul {
+        margin: 6vh 0;
+        height: 460px;
+        border : 4px solid #fff;
+    }
+    
+    .main_img > img {
+        display: block;
+        width : 200px;
+        height: 390px;
+    }
+    
+    .main_para {
+        width : 200px;
+        height: 60px;
+        line-height: 55px;
+    }
+
+}
+
+
+
+
+/* footer */
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+footer > div {
+    display: flex;
+    flex-direction: row;
+    justify-content : space-between;
+}
+
+/*
+footer > div > p {
+    display:inline;
+    margin-right: 20px;
+}
+*/
+
+footer > div > ul {
+    display:flex;
+    flex-direction: row;
+}
