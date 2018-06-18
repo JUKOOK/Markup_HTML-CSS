@@ -1,0 +1,225 @@
+/* Padding과 Margin Prorperty 
+	Padding : 박스의 콘텐츠와 박스 외곽선 사이의 공간
+	Margin : 박스의 바깥 공간. 이 박스의 위, 아래, 양 옆의 다른, 혹은 상위 박스들이나 스크린 등과의 사이 공간
+	 브라우저 내에서 element들의 배치와 디자인적 요소를 따질 때 아주 중요하다.
+	단위는 둘 다 px, %를 사용할 수 있다.
+	주요 웹 브라우저는 default padding과 margin이 지정되어 있다.(User agent stylesheet이라 한다.)
+	그래서 페이지 상 디자인 배치를 하려 한다면 default padding, margin 값을 초기화하는 것이 좋다.
+	
+	* {
+		padding : 0px;
+		margin : 0px;
+	}
+	모든 element들에 대해 padding, maigin을 없애 초기화하였다.
+*/
+/* padding 지정
+
+	Selector {
+		padding : Npx;
+	}
+	컨텐츠와 상자의 외곽 네 면 사이에 Npx만큼 공간이 생긴다
+	상자에 padding을 설정하면 상자의 너비와 높이에 Npx만큼 추가되어 상자의 크기가 커진다.
+	네 면에 따로따로 지정도 가능하고, 위아래랑 옆쪽을 묶어서 지정할 수도 있다.
+	
+	Selector {
+		padding : (위)px (오른쪽)px (아래)px (왼쪽)px;   (시계방향 순서)
+		padding : (위아래)px (양 옆)px;
+	}
+	특별히 각 면면마다 따로 padding을 지정하는 Property도 있다.
+	padding-top, padding-right, padding-bottom, padding-left.
+*/
+/* margin 지정
+	margin도 border-width, padding처럼 사면 한 번에 설정할 수도, 위아래랑 양 옆을 묶어서, 혹은 네 면 따로따로 모두 지정 가능하다.
+	
+	Selector {
+		margin : Npx;
+		margin : (위)px (오른쪽)px (아래)px (왼쪽)px;   (시계방향 순서)
+		margin : (위아래)px (양 옆)px;
+	}
+	역시 border-width, padding처럼 각 면면마다 따로 maigin을 지정하는 Property도 있다.
+	margin-top, margin-right, margin-bottom, margin-left.
+	margin을 각 면면마다 지정하는 것은 상자 외부의 공간에 작용하므로 한정된 스크린에서 디자인적 배치를 고려할 때 자주 사용한다.
+	margin의 value로 auto라는 것이 있다. 박스를 가운데에 맞춰준다.
+	
+	Selector {
+		margin : auto;
+	}
+	이 경우 이 Selector element 컨텐츠는 화면 중간에 배치되어야하겠지만 그렇지 않다.
+	모든 element 박스는 width, 너비를 갖고, 이 width의 길이와 자신이 포함된 상위 박스의 width 길이를 기준으로 가운데를 맞추게 된다.
+	element의 width를 따로 설정 하지 않으면 default width는 상위 박스의 width와 동일해지므로 상위 박스를 기준으로 가운데를 맞출 수 없다.
+	따라서 margin 값을 auto로 주려면 이 박스의 width, 너비를 설정해주어야 하며 그 크기는 바로 상위 박스의 width보단 작아야 한다. 
+	(Nested div 등에서 주요하며, html element들의 최상위 박스는 <body> ~~ </body>이다.)
+*/
+/* display : element들의 layout을 변경하는 Property. 
+	layout(rendering type, 도시하는 법)은 두 가지로 나뉜다.
+	1. inline element : text가 아랫줄로 자동으로 넘어가는 것은 제외하고, 컨텐츠를 한 줄로 도시하는 element (link 등)
+	2. block-level element : 컨텐츠 하나 하나가 한 줄 전체를 사용하여 도시하고, text가 아랫 줄로 자동으로 넘어가는 것을 막는다.
+	 대부분의 html element들이 이 block-level에 해당된다. (p나 div 등)
+	 
+	display는 이런 element들의 layout을 변경할 수 있는 property이다. value는 다음과 같다.
+	1. inline - block-level elements를 inline element처럼 도시하게 한다.
+	2. block - inline elements를 block-level element처럼 도시하게 한다.
+	3. inline-block - block-level elements를 inline element처럼 도시하게 하되 block-level element의 특징을 남긴다.
+	   (text, 컨텐츠가 자동으로 아랫 줄로 넘어가는 것 방지)
+	4. none - element를 도시하지 않는다.(아예 웹에 표시 안 됨) 다른 element들은 이 element가 원래 없었던 것처럼 도시된다.
+*/
+/* visibility : 가림 적용하는 Property. 
+	이 visibility의 값을 hidden으로 주면 element는 도시되지 않는다. 그러나 display의 값 none과의 차이가 있는데
+	'display : none' 의 경우 아예 도시를 하지 않고 다른 element 역시 이 element의 존재를 인식하지 않고 그 자리를 차지할 수 있다.
+	'visibility : hidden' 의 경우는 컨텐츠의 자리만 공백으로 두는 것이다. 즉, element 컨텐츠의 크기만큼 공백이 생기고 다른 element가 차지할 수 없다.
+*/
+
+/* 전체 element에 대해 border, margin, padding 설정 0을 값으로 준건 초기화이다. */
+	* {
+	  border: 1px solid rgba(0, 0, 0, 0.3);
+	  margin-left : 20px;
+	  margin-right : 20px;
+	  margin : 0px;
+	  padding : 0px;
+	}
+/* donate class를 상속받는 element는 가림 처리된다. (공간은 차지한다.)*/
+	.donate {
+	  visibility : hidden;
+	}
+
+	body {
+	  background-color: #FFF;
+	  font-family: 'Raleway', sans-serif;
+	}
+
+	.navigation {
+	  text-align: center;
+	}
+
+	ul {
+	  margin: 0;
+	  padding: 0;
+	}
+
+	li {
+	  font-weight: 100;
+	  letter-spacing: 2px;
+	  padding: 20px 0px;
+	  text-transform: uppercase;
+/* margin은 border-width, padding과 같이 세 가지 방식으로 지정 가능하다. 
+	  margin : 5px;
+	  margin : 0px 20px 0px 20px; */
+	  margin : 0px 20px; 
+	  display : inline-block;
+	}
+
+	.logo {
+	  color: #000;
+	  font-size: 18px;
+	  font-weight: 700;
+	  letter-spacing: 4px;
+	  padding: 0px 50px;
+	}
+
+	.banner {
+	  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-6/htmlcss1-img_tahoe.jpeg");
+	  background-size: cover;
+	  background-position: bottom center;
+	  height: 700px;
+	  width: 100%;
+	}
+
+	#banner-content {
+	  border: 1px solid #FFF;
+	  position: relative;
+	  top: 20%;
+	  width: 60%;
+	/*'margin : auto' 는 해당 element가 상위 박스보다 width가 기본적으로 작아야 한다. 
+	   이 id 상속 element의 경우 상위 박스 width의 60%에 해당하는 width를 가지므로 'margin : auto' 적용을 할 수 있다. 
+	   상위 박스 외곽 면대비 20%씩의 공간을 가지고 가운데 위치에 표시될 것이다*/
+	  margin : auto;
+	/*padding : 30px; */
+	  padding : 30px 10px 30px 10px;
+	}
+
+	h1 {
+	  color: #FFF;
+	  font-size: 42px;
+	  font-weight: 600;
+	  text-align: center;
+	}
+
+	h2 {
+	  border: 1px solid #D7263D;
+	  color: #D7263D;
+	  font-size: 20px;
+	  line-height: 48px;
+/* padding을 지정하는데 위아래, 양옆을 나눠서 하였다. 위 아래의 경우 콘텐츠와 외곽면 사이에 40px 공간을 준다.
+   양 옆의 경우 이 element 박스 width 대비 12%의 길이에 해당하는 공간을 준다. */	
+	  padding: 40px 12%;
+	  text-align: center;
+	  text-transform: uppercase;
+	}
+
+	h3 {
+	  color: #D7263D;
+	  font-size: 26px;
+	  font-weight: 700;
+	  padding: 20px 10%;
+	  text-transform: uppercase;
+	}
+
+	p {
+	  color: #333;
+	  font-size: 16px;
+	  line-height: 48px;
+	  margin-top: 60px;
+	}
+
+	.pull-quote {
+	  margin: 0 auto;
+	  width: 70%;
+	}
+
+	.content {
+	  margin: 0 auto;
+	  padding: 40px;
+	  text-align: center;
+	  width: 70%;
+	}
+
+	.byline {
+	  border-bottom: 1px solid #CCC;
+	  border-top: 1px solid #CCC;
+	  padding-top : 20px;
+	  padding-bottom : 20px;
+	  color: #333;
+	  font-size: 14px;
+	  font-weight: 200;
+	  text-transform: uppercase;
+	}
+
+	.share {
+	  border: 1px solid #DDD;
+	  padding: 40px 0px;
+	  position: relative;
+	  text-align: center;
+	  width: 100%;
+	}
+
+	.share a {
+	  background: #D7263D;
+	  border: 1px solid #D7263D;
+	  border-radius: 3px;
+	  color: #FFF;
+	  display: inline-block;
+	  margin: 10px 10px;
+	  padding: 14px;
+	  text-transform: uppercase;
+	  text-decoration: none;
+	}
+
+	.share a:hover {
+	  background: #FFF;
+	  border: 1px solid #D7263D;
+	  color: #D7263D;
+	  animation: ease;
+	}
+	
+	
+	

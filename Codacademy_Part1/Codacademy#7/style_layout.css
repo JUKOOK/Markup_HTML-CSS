@@ -1,0 +1,155 @@
+/* 이전에 그랬듯 html element들은 보통 block-level이다. 그리고 공간이 정해지고 위치 조정해서 딱 박히면 스크롤 내리면 스르륵 사라진다. 이것을 바꿔보자. */
+/* position : element 박스가 웹 페이지 상에 위치되는 매커니즘을 정한다. value는 네 개이며 default를 빼면 세 개이다.
+	1. 이 position 값을 지정한 경우 그 아래 추가적으로 영향을 줄 수 있는 offset property를 지정할 수 있다.
+	  top, bottom, left, right : element를 일정 거리 움직인다. 혹은 위치를 지정한다. value 단위는 px, em, %를 쓴다.
+	2. 다음은 default value인 static을 뺸 나머지 value들이다.
+		- ralative : 상대 위치. offset poperty들은 element가 정상적인 흐름에 있었을 경우(static)의 위치를 기준으로 element를 이동한다. 
+		- absolute : 절대 위치. element가 정상적인 흐름에서 벗어난다. 페이지의 다른 element들의 위치에 영향을 주지 않는다.(원래 그 위치에 없었던 것처럼)
+		  자신이 속한 상위 박스를 기준으로 element의 위치를 지정한다.
+		- fixed : 고정 위치 . element가 정상적인 흐름에서 벗어나 아예 브라우저 창을 기준으로 위치를 잡는다.
+		  페이지를 스크롤하며 넘겨도 이 element는 동일한 위치에 떠 있으며, 다른 element는 이 element 뒤로 사라지며, 이 element가 차지한 공간을 무시한다.
+		  참고로 불투명한 배경색을 설정해놓으면 뒤로 넘어가는 text와 겹쳐서 나오는 문제를 방지할 수 있다.(뒤의 text가 안 보인다.)
+	이 세 가지 value로 position이 지정되면 그 아래 offset property로 위치되는 매커니즘을 제어할 수 있다.
+*/ 
+/* z-index : position 지정으로 겹치는 element들의 위치 순서(누가 더 앞에 위치할 것인가)를 제어할 Property.
+	 단위는 정수를 쓴다. 숫자가 클수록 뒤 앞에 위치시킨다.
+*/
+/* float : 부유 Property. 흔히 한글의 '어울림' 위치 지정과 같은 것이다. 
+	value는 left 또는 right이다. element를 정상적인 흐름에 배치하되 상위 박스 기준으로 왼쪽 혹은 오른쪽에 위치시킨다.
+	같은 박스 내의 다른 element들은 float 지정한 element의 주위에 (같은 줄에도) 위치할 수 있다.
+	같은 줄에도 다른 element의 컨텐츠가 위치할 수 있게 반드시 width 의 값도 지정을 해 놓아야 한다.(상위 박스 width보단 작게)
+*/
+/* clear : float 지정으로 부딫히는 element들을 제어할 Property.
+	float 속성을 사용하여 한 번에 여러 element를 부유시킬 수 있다. 그러나 이 element들의 높이가 다른 경우 페이지의 레이아웃에 영향을 줄 수 있다.
+	특히, element끼리 서로 부딪 히거나 다른 element가 왼쪽이나 오른쪽으로 올바르게 이동하지 못할 수 있다.
+	(한글 등에서 이미지 여럿 놓고 "어울림" 위치지정하면 하나 옮길 때마다 이미지 위치 순서가 마구마구 바뀌는 그런 현상.)
+	이것을 제어하는 것이 claer property이다. value는 다음과 같다.
+	 1. left : element 박스의 왼쪽에 다른 element box가 위치하지 못하게 한다.
+	 2. right : element 박스의 오른쪽에 다른 element box가 위치하지 못하게 한다.
+	 3. both : element 박스의 왼쪽, 오른쪽 모두에 다른 element box가 위치하지 못하게 한다.
+	 4. none : 박스의 위치를 제약하지 않는다.
+*/
+
+	body {
+	  background-color: #FFF;
+	  margin: 0;
+	  padding: 0px 60px;
+	}
+
+	.header {
+	  background-color: #466995;
+	  border-bottom: 1px solid #466995;
+	  overflow-y: auto;
+	  width: 100%;
+/* 절대 위치 지정. 상위 박스 기준 왼쪽 위에 위치한다.
+	  position : absolute;
+	  top : 0px;
+	  left : 0px;*/
+/* 고정 위치 지정 : 페이지에 고정되어 항상 노출된다. */
+	  position : fixed;
+	  z-index : 1000;
+	}
+
+	ul {
+	  margin: 30px auto;
+	  text-align: center;
+	}
+
+	li {
+	  color: #FFF;
+	  display: inline-block;
+	  font-family: 'Oswald', sans-serif;
+	  font-size: 16px;
+	  text-align: left;
+	  font-weight: 300;
+	  text-transform: uppercase;
+	  padding: 0 40px;
+	}
+/* hover 로 마우스 올렸을 때 효과를 지정했다. */
+	li:hover {
+	  color: #DBE9EE;
+	}
+
+	h1 {
+	  color: #466995;
+	  font-family: 'Oswald', sans-serif;
+	  font-size: 32px;
+	  font-weight: 300;
+	  text-transform: uppercase;
+	}
+
+	h2 {
+	  color: #333;
+	  font-family: 'Varela Round', sans-serif;
+	  font-size: 26px;
+	  font-weight: 100;
+	  margin: 0 auto 40px auto;
+	}
+
+	h3 {
+	  color: #466995;
+	  font-family: 'Oswald', sans-serif;
+	  font-size: 18px;
+	  text-align: center;
+	  font-weight: 700;
+	  text-transform: uppercase;
+	}
+
+	h4 {
+	  color: #466995;
+	  font-family: 'Oswald', sans-serif;
+	  font-size: 18px;
+	  font-weight: 300;
+	  letter-spacing: 2px;
+	  text-align: center;
+	  text-transform: uppercase
+	}
+
+	p {
+	  color: #333;
+	  font-family: 'Varela Round', sans-serif;
+	  font-size: 18px;
+	}
+
+	.welcome {
+	  background-color: #DBE9EE;
+	  box-sizing: border-box;
+	  padding: 40px;
+	  text-align: center;
+	  width: 100%;
+/* 고정 위치. 스크린에 완전히 고정되어 뒤의 element가 움직이는 것에 상관 없이 페이지에 떠 있다. z-index를 999를 주었다
+   이후 position 지정된 다른 element에 대해 z-index가 999이하이면 앞에 노출되고 999보다 크면 뒤에 노출된다.
+	  position: fixed;
+	  left: 0;
+	  top: 80px;
+	  z-index: 999; */
+	  margin-top : 50px;
+	}
+
+	.question {
+	  margin: 120px auto;
+	  text-align: center;
+	/*position : static;*/
+/* 상대 위치 : 정상적인 위치였을 때 기준으로 offset property 지정만큼 움직여서 위치한다. 즉, 위에서 240px 거리 이동한 곳에 위치한다.*/
+	  position : relative;
+	  top : 240px;
+	}
+
+	.answer {
+	  border: 1px solid #466995;
+	  display: inline-block;
+	  height: 100px;
+	  margin: 20px;
+	  padding-top: 40px;
+	  width: 220px;
+/*	부유 element 상위 박스 기준 왼쪽에 위치하되 함께 있는 다른 element들은 이 element 오른편에 컨텐츠가 올 수 있다. */
+      float : left;
+/* clear로 부유하는 element들끼리 부딪히면 각 element들의 왼쪽 면엔 다른 element가 오지 못하게 지정한다.  */
+	  clear : left;
+	}
+
+	.answer:hover {
+	  background: #C0D6DF;
+	  color: #FFF;
+	}
+	 	

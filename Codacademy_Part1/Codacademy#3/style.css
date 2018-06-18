@@ -1,0 +1,35 @@
+/* Selector : CSS 스타일링을 할 element 이름 */
+/* Structure Syntax
+
+	Selector(, 으로 여러 Selector 선언 가능) {
+		Property : value;           
+	}             
+   
+  링크되는 웹 파일의 해당 Selector는 모두 이 스타일링을 따라간다.
+*/
+/* Universal Selector
+
+	* {
+		Property : value;
+	}
+	
+	웹 페이지 내 모든 element에 적용된다. 또한 이 뒤에 이걸 배이스로 깔고, 개별적인 CSS 스타일링을 추가하면 된다.
+*/
+/* Structure간에는 한 줄의 간격을 둔다. 가독성 향상을 위함이다. */
+
+	h1 {
+	  color : FireBrick;
+	}
+
+	p {
+	  font-size : 18px;
+	}
+
+	h1, p {
+	  color : DarkSlateGray;
+	}
+
+	* {
+	  font-family : Georgia;
+	}
+

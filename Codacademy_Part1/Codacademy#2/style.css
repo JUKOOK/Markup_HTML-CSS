@@ -1,0 +1,13 @@
+/* Tip! Css의 경우 주석은 HTML처럼 '<!--  -->'이 아니라 '/* -- * /'을 사용한다. */
+/* style.css Css 파일 */
+    * {
+		font-family: 'Georgia', 'Times', serif;	
+	}
+	a {
+		color: SeaGreen;
+		text-decoration: none;
+	}	
+	img {
+		border-radius: 100%;
+	}
+	

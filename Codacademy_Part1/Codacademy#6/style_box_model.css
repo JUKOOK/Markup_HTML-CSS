@@ -1,0 +1,114 @@
+/* Box 모델의 변형 
+	다음의 CSS 스타일링을 보자
+
+	h1 {
+		border: 1px solid black;
+		height: 200px;
+		width: 300px;
+		padding: 10px;
+	}
+	외곽선은 solid한 1px 두께의 검은 선, 높이는 200px, 너비는 300px, 컨텐츠와 외곽선 사이는 10px의 간격을 둔다.
+	이 CSS 코드는 웹 페이지 상에서 결과적으로 높이는 222px(200 + 10*2 + 1*2), 너비는 322px(300 + 10*2 + 1*2) 스타일링이 된다.
+	여기서 box 모델의 한계를 볼 수 있다. 즉, 원래 높이와 너비에 더해 padding, width가 박스 크기에 영향을 준다.
+	이런 box 모델의 크기 지정에 대한 애매한 제약을 해결할 Property가 있다.
+*/
+/* box-sizing : box 모델의 rendering(도시)하는 방식을 지정하는 Property.
+	default value는 'content-size'로 content의 크기가 고정되는 원래의 방식.
+	border, height, width, padding 등의 지정을 외곽선의 크기을 조절함으로써 도시해낸다.
+	value로 'border-box'를 주면 외곽선의 크기가 height, width로 고정된다. 이후의 스타일링은 모두 박스 안쪽에서 조정되는 것이다.
+	border, padding 등의 지정이 있을 때 컨텐츠의 크기를 조절해서(줄이거나 해서) 외곽 박스의 크기는 똑같이 두고 도시해낸다.
+
+	* {
+		box-sizing: border-box;
+	}
+	맨 처음에 이렇게 border-box 값으로 지정해서 Box 모델을 초기화해두면 섬세한 디자인적인 배치를 할 때 아주 요긴하다.
+*/
+
+/* box-sizing을 border-box 고정하는 방식으로 모든 element에 대해 Box 모델 초기화 */
+	* { 
+	  box-sizing : border-box;
+	}
+
+	body {
+	  background-color: #FFF;
+	  margin: 0px;
+	  padding: 50px 60px;
+	}
+
+	h1 {
+	  color: #004E89;
+	  font-family: 'Yantramanav', sans-serif;
+	  font-size: 50px;
+	  font-weight: 400;
+	  margin: 0;
+	  text-align: center;
+	}
+
+	h2 {
+	  color: #AAA;
+	  font-family: 'Yantramanav', sans-serif;
+	  font-size: 16px;
+	  font-weight: 100;
+	  letter-spacing: 2px;
+	  margin: 0;
+	  text-align: center;
+	  text-transform: uppercase;
+	}
+
+	p {
+	  color: #333;
+	  font-family: 'Yantramanav', sans-serif;
+	  font-size: 16px;
+	  font-weight: 100;
+	  margin: 0;
+	  text-align: center;
+	}
+
+	.actions {
+	  text-align: center;
+	  margin-top: 30px;
+	}
+
+	.actions a {
+	  background-color: #9DD1F1;
+	  border-radius: 3px;
+	  color: #004E89;
+	  font-family: 'Yantramanav', sans-serif;
+	  font-size: 16px;
+	  font-weight: 300;
+	  display: inline-block;
+	  margin: 10px;
+	  padding: 12px;
+	  text-align: center;
+	  text-decoration: none;
+	  text-transform: uppercase;
+	}
+
+	#gameboard {
+	  position: relative;
+	  text-align: center;
+	  top: 30px;
+	}
+
+	.card {
+	  
+	  border: 2px solid #9DD1F1;
+	  display: inline-block;
+	  height: 200px;
+	  margin-top: 4px;
+	  padding: 30px auto;
+	  text-align: center;
+	  width: 215px;
+	}
+/* 중요한 Selecetor의 추가적인 요소 하나가 있다. 
+   :hover은 이 클래스를 상속받는 element에 마우스를 올려 놓을 때 변화되는 스타일링을 지정한다. 
+   이 CSS 파일이 링크하는 html 파일 안에서 이 card 클래스를 상속 받는 html 요소가 img이므로 
+   웹에서 해당 이미지에 마우스를 올리면 아래의 스타일링이 뜬다.*/
+	.card:hover {
+	  background-color: #004E89;
+	  border-color: #00FF89;
+	}
+
+	.card img {
+	  padding-top: 40px;
+	}

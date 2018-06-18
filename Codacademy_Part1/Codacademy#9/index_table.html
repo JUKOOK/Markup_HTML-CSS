@@ -1,0 +1,113 @@
+<!-- HTML 내 테이블 만들기!! -->
+<!-- 구조는 다음과 같다.
+	1. <table>  ~~  </table> 로 만들어진다.
+	2. 기본적으론 row, tuple 조합이므로 <tr> ~~ </tr> 이 row 한 줄을 만든다.
+	3. 각 <tr> ~~ </tr> 안에는 <td> ~~ </td> 가 table data로써 하나씩 field를 늘려간다.
+	4. 테이블에는 구분이 있다. 맨 윗줄과 맨 왼쪽 줄은 각각 table header로 불리며 <td> ~~ </td> 대신 <th> ~~ </th>로 입력한다.
+	5. <th> ~~ </th> 에서 heading의 구분을 위해 'scope' 속성을 줄 수 있다.
+	   값을 "row"로 하면 맨 왼쪽 줄의 구분란, "col"로 하면 맨 윗쪽 줄의 필드란이 된다.
+	6. table의 필드란을 구성하는 맨 윗줄(scope = "col")과 그 아래 table tuple들이 모여있는 곳을 구분할 수 있다.
+	   이는 두 부분을 구분해서 CSS 스타일링을 특정하기에 좋기 때문이다.
+	   두 부분은 <thead> ~~ </thead>와 <tbody> ~~ </tbody>로 나눌 수 있다.
+	   추가로 맨 마지막 부분에 Total이나, Sum, 계 등의 종합 data를 넣는 경우 이 마지막 줄은 <tfoot> ~~ </tfoot>으로 구분할 수 있다.
+
+	<table>
+	  <thead>                                     table의 필드란을 구성하는 맨 윗줄임을 표시
+		  <tr>									  하나의 row 
+			<th></th>                             비어 있는 heading
+			<th scope="col">Saturday</th>         맨 윗줄 필드란에 해당하는 heading 
+			<th scope="col">Sunday</th>           맨 윗줄 필드란에 해당하는 heading 
+		  </tr>
+	  </thead>
+	  <tbody>                                     table tuple들이 모여있는 곳임을 표시
+		<tr>									  하나의 row 
+		  <th scope="row">Temperature</th>        맨 왼쪽 줄 구분란에 해당하는 heading  
+		  <td>73</td>                             table data(tuple)
+		  <td>81</td>                             table data(tuple)
+		</tr>
+		<tr>									  하나의 row 
+		  <th scope="row">Moisture</th>           맨 왼쪽 줄 구분란에 해당하는 heading  
+		  <td>23</td>                             table data(tuple)
+		  <td>55</td>                             table data(tuple)
+		</tr>
+	  </tbody>
+  	  <tfoot>                                     tuple들의 종합 data를 표시하는 마지막 줄임을 표시
+	  	<tr>									  하나의 row 
+		  <th scope="row">Average</th>            맨 왼쪽 줄 구분란에 해당하는 heading  
+		  <td>48</td>                             table data(tuple)
+		  <td>78</td>                             table data(tuple)
+		</tr>
+	  </tfoot>
+	</table>
+	
+	7. 이 모든 element들은 CSS 스타일링을 모두 적용할 수 있다.
+	8. <td> ~~ </td>에서 속성으로 rowspan을 쓰면 row를 확장할 수 있고, colspan을 쓰면 column을 확장할 수 있다. value는 양의 정수.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ship To It - Company Packing List</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato: 100,300,400,700|Luckiest+Guy|Oxygen:300,400" rel="stylesheet">
+  <link href="style_table.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+  <ul class="navigation">
+    <li><img src="https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-9/htmlcss1-img_logo-shiptoit.png" height="20px;"></li>
+    <li class="active">Action List</li>
+    <li>Profiles</li>
+    <li>Settings</li>
+  </ul>
+
+  <div class="search">Search the table</div>
+	<table>
+    <thead>
+      <tr>
+        <th> Company Name </th>
+        <th> Number of Items to Ship </th>
+        <th> Next Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Adam's Greenworks </td>
+        <td> 14 </td>
+        <td> Package Items </td>
+      </tr>
+      <tr>
+        <td>Davie's Burgers</td>
+        <td >2</td>
+        <td>Send Invoice</td>
+      </tr>
+      <tr>
+        <td>Baker's Bike Shop</td>
+        <td>3</td>
+        <td>Send Invoice</td>
+      </tr>
+      <tr>
+        <td >Miss Sally's Southern</td>
+        <td>4</td>
+        <td>Ship</td>
+      </tr>
+      <tr>
+        <td>Summit Resort Rentals</td>
+        <td>4</td>
+        <td>Ship</td>
+      </tr>
+      <tr>
+        <td>Strike Fitness</td>
+        <td>1</td>
+        <td>Enter Order</td>
+      </tr>
+    </tbody>
+    <tfoot>
+  	  <tr>
+ 		<td>Total</td>
+		<td>28</td>
+      </tr>
+    </tfoot>
+  </table>
+
+</body>
+</html>

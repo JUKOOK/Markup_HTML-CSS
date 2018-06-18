@@ -1,0 +1,115 @@
+/* CSS color 스타일링 */
+/* 색상은 두 가지로 나뉜다. 
+	The foreground color : Text에 직접 영향 / Property는 color.
+	The background color : 해당 Seletor이 차지하는 공간의 배경색, Text만 제외. / Property는 background-color.
+*/
+/* color : 색상의 선언
+	1. Named colors라 하여 Red, Blue, Yellow 같은 것들은 이름으로 지정가능하다.
+	2. 다만 수많은 색상들은 RGB 표현을 사용한다. (red(R), green(G), and blue(B))
+	   value 값을 decimal로는 rgb(123, 20, 233) 의 형식으로, Hexa로는 #xxxxxx 의 형식(두자리씩 끊음)으로 지정한다.
+	   ※ #FFFFFF = #FFF, #1122BB = #12B 로 축약 가능
+	3. HSL 표현 : 형식은 hsl(Hue, Saturation, Lightness). 각각 색조, 채도, 밝기를 의미
+	   색조는 0~360 범위의 색상, 채도는 0%~100% 범위의 회색의 정도, 밝기는 0%~100% 범위의 백색 정도(50%가 default이다.)
+	4. RGB 표현과 HSL 표현은 불투명도(Opacity)를 지정할 수 없다. 이를 위해 rgba 표현, hsla 표현이 있다.
+	   rgba(red(R), green(G), blue(B), and alph(Opacity)) hsla(Hue, Saturation, Lightness, alpha(Opacity))
+	   alpha(Opacity)는 0~1의 범위를 갖고 0에 가까울 수록 투명해진다.
+	5. RGBa, HSL, or HSLa의 경우 구형 브라우저는 지원이 안될 수 있다.
+	   그래서 다양한 브라우저에 수용 할 수 있도록 CSS 코드에 색상 선언을 중복해서 포함하는 것이 좋다.
+	   그래서 CSS는 브라우저가 특정 선언을 지원할 수없는 경우에 대비하여 여러 CSS 색상의 선언을 추가 할 수 있습니다.
+ */
+ /* 색상의 중복 선언
+	Property의 중복 선언시 브라우저가 인식하는 순서는 지원 가능한 가장 아래쪽에 있는 Property이다. 
+	h1 {
+	  color: rgb(22, 34, 88);
+	  color: rgba(22, 34, 88, 0.4);
+	}
+	이 코드의 경우 브라우저가 rgba를 지원한다면 rgba 표현을 따르고 그렇지 않으면 rgb 표현을 따른다.
+	순서가 rgba 다음으로 rgb가 와버리면 모든 브라우저가 rgb 표현을 따라간다.
+
+	★CSS rule상 동일 property의 중복 선언시 아랫쪽으로 갈수록 우선권이 있다. (위 -> 아래 순으로 읽어들이기에 마지막에 인식되는 것이 지정된다.)
+	★따라서 더 상위 CSS 코드가 아랫쪽에 위치해야 하며 이는 모든 Seletor의 Property 중복 선언에 대해 동일한 원칙으로 작용한다.
+ */
+
+	body {
+	  padding: 0;
+	  margin: 0;
+	  background: #f7f7f7;
+	  /* Old browsers */
+	  background: -moz-linear-gradient(45deg, #f7f7f7 0%, #EAE0D5 100%);
+	  /* FF3.6-15 */
+	  background: -webkit-linear-gradient(45deg, #f7f7f7 0%, #EAE0D5 100%);
+	  /* Chrome10-25,Safari5.1-6 */
+	  background: linear-gradient(45deg, #f7f7f7 0%, #EAE0D5 100%);
+	}
+
+	/** Header styles **/
+
+	.header {
+	  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-4/htmlcss1-img_coffee-bgnd.jpeg");
+	  height: 400px;
+	  background-position: center center;
+	}
+
+	h1 {
+	/*color : Crimson;
+	  color : rgb(54, 74, 101); 
+	  color : #452F73;
+	  color : hsl(350, 58.8%, 42.0%);
+	  color : rgba(2, 93, 140, 0.9); 90%의 불투명도 */
+	  color : rgb(3, 150, 100);
+ 	  color : rgba(3, 101, 100, 0.75); /* 75%의 불투명도 */
+	  /* 이 경우 rgba를 지원하는 브라우저는 아래 표현을, 그렇지 않은 브라우저는 위의 rgb를 적용한다. */
+	  font-family: 'Covered By Your Grace', sans-serif;
+	  font-size: 100px;
+	  line-height: 76px;
+	  margin: 0;
+	  position: relative;
+	  text-align: center;
+	  top: 20%;
+	}
+
+/** List style **/
+
+	h2 {
+	/*background-color : Marine;
+	  background-color : rgb(23, 108, 224); */
+	  background-color : #AA8EB5;
+	  color: #E4BB97;
+	  font-family: 'Raleway', sans-serif;
+	  font-size: 28px;
+	  font-weight: 500;
+	  text-align: left;
+	  text-transform: uppercase;
+	}
+
+	ul {
+	  margin: 0 auto;
+	  padding: 0;
+	  width: 50%;
+	}
+
+	li {
+	  border-bottom: 1px solid #E4BB97;
+	  list-style: none;
+	  margin: 100px 0px;
+	  padding-bottom: 60px;
+	}
+
+	p {
+	  color: #444444;
+	  line-height: 32px;
+	  font-family: 'Raleway', sans-serif;
+	  font-size: 20px;
+	  font-weight: 100;
+	}
+
+	a {
+	  color: #214E34;
+	  font-family: 'Raleway', sans-serif;
+	  font-size: 13px;
+	  font-weight: 900;
+	  text-align: left;
+	  text-transform: uppercase;
+	  text-decoration: none;
+	  letter-spacing: 2px;
+	}

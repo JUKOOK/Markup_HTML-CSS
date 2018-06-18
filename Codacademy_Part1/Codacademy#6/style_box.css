@@ -1,0 +1,169 @@
+/* 모든 HTML element들은 box model이다. */
+/* border : element의 박스 모양 외각선을 조정하는 Property.
+	value로 '1px solid rgba(0, 0, 0, 0.3)' 등의 px단위 두께, 효과, 색상까지 지정할 수 있다.
+	border은 박스의 외각을 담당한다면, 이 박스의 가로, 세로면들을 담당하는 Property도 있다.
+	width(너비, 가로), height(높이, 세로) 이것들의 단위는 다음과 같다.
+	 1. px -> 픽셀 단위로 글꼴 크기 지정 가장 정확한 절대 길이.
+	 2.	em -> "엠", 상대적 측정 단위. 박스 내부 텍스트의 글씨 크기를 지군으로 한다.
+	 3.	% -> 상대적 측정 단위, 박스 속에 박스(Nested 구조)일 경우 외부 박스의 px 사이즈를 기준으로 내부 박스의 길이를 정한다.
+*/
+/* min? max?
+	웹 페이지는 다른 화면 크기의 디스플레이를 통해 볼 수 있기 때문에 웹 페이지의 콘텐츠는 크기가 변경 될 수 있다.
+	그래서 CSS는 element 박스의 최소, 최대 범위를 제한하고 두 가지 속성을 제공한다.
+	 1. min-width, max-width : 박스의 너비, 가로 폭의 최솟값 최댓값을 제한한다. 
+	 2. min-height, max-height : 박스의 높이, 세로 폭의 최솟값 최댓값을 제한한다. 
+	단위는 모두 px을 쓴다.
+*/
+/* overflow : 
+	max-height 값이 너무 낮으면 어떻게 될까? 콘텐츠가 상자 외부로 유출되어 읽을 수 없는 콘텐츠가 생성 될 수 있다.
+	min-이던 max-이던 설정되어 고정된 상태에서 화면의 조정으로 인해 컨텐츠 표시에 문제가 생기는 경우를 overflow, 오버플로우라고 한다.
+	overflow는 overflow Property를 통해 상자 높이가 너무 낮아 문제가 생긴 컨텐츠의 처리를 결정할 수 있다.
+	 1. hidden : 값으로 hidden을 주면 overflow되는 컨텐츠를 view(화면)에서 아예 숨겨버린다.
+	 2. scroll : 값으로 hidden을 주면 overflow되는 컨텐츠에 스크롤바가 생긴다. 스크롤을 이용하여 컨텐츠를 일부분씩 볼 수 있다.
+*/
+
+/* 모든 element의 박스 외곽선을 표시했다. 두께는 1px, solid 효과의 선, 색상은 rgba(0, 0, 0, 0.3) 지정 */
+	* { 
+	  border: 1px solid rgba(0, 0, 0, 0.3);
+	}
+
+	body {
+	  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-6/htmlcss1-img_foodlogo.png");
+	  background-repeat: repeat;
+	  overflow: hidden;
+	  text-align: center;
+	}
+
+	.navigation {
+	  background-color: rgba(255, 255, 255, 0.9);
+	  height: auto;
+	  text-align: center;
+	  position: fixed;
+	  left: 0;
+	  top: 0;
+	  z-index: 999;
+	  width : 100%;
+	}
+
+	.navigation ul {
+	  padding: 0;
+	}
+
+	.navigation li {
+	  color: #666666;
+	  display: inline-block;
+	  font-family: 'Roboto', sans-serif;
+	  font-size: 16px;
+	  font-weight: 100;
+	  letter-spacing: 2px;
+	  margin: 20px;
+	  text-transform: uppercase;
+	}
+
+	/** Right side styling **/
+
+	.content-box {
+	  background: rgba(255, 255, 255, 0.9);
+	  height: 500px;
+	  margin: 0 auto;
+	  position: relative;
+	  top: 220px;
+	  width: 80%;
+/*  content-box class의 height는 500px인데 화면이 너무 작아서 다 안 나오므로 
+	overflow property에 scroll 값을 주어 overflow된 컨텐츠들을 스크롤하여 볼 수 있게 한다. */ 	  
+	  overflow : scroll;
+	}
+
+	.content-header {
+	  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-6/htmlcss1-img_burgerphoto.jpeg");
+	  background-position: center;
+	  background-size: cover;
+	  position: relative;
+	  top: -50px;
+	  height : 320px;
+	}
+
+	.content-body {
+	  margin: 0 auto;
+	  width: 90%;
+	}
+
+	h1 {
+	  background: #05A8AA;
+	  color: #FFF;
+	  font-family: 'Oswald', sans-serif;
+	  font-size: 40px;
+	  font-weight: 300;
+	  line-height: 40px;
+	  margin: 0 auto;
+	  padding: 20px;
+	  position: relative;
+	  text-transform: uppercase;
+	  top: 130px;
+	  width: 70%;
+	}
+
+	h2 {
+	  color: #FFF;
+	  font-family: 'Roboto', sans-serif;
+	  font-size: 26px;
+	  font-weight: 700;
+	  letter-spacing: 2px;
+	  margin: 0;
+	  text-transform: uppercase;
+	}
+
+	h3 {
+	  color: rgba(255, 255, 255, 0.6);
+	  font-family: 'Roboto', sans-serif;
+	  font-size: 16px;
+	  font-weight: 100;
+	  letter-spacing: 2px;
+	  margin: 0;
+	  text-transform: uppercase;
+	}
+
+	p {
+	  color: #333;
+	  font-family: 'Roboto', sans-serif;
+	  font-size: 18px;
+	  font-weight: 100;
+	  line-height: 34px;
+/* P element에 min-, max- Property로 박스의 가로, 세로 폭의 범위를 제한했다. */	  
+	  min-width : 200px;
+	  max-width : 800px;
+	  min-height : 200px;
+	  max-height : 300px;
+	}
+
+	.content-box ul {
+	  padding: 40px 0px;
+	}
+
+	.content-box li {
+	  background-color: #05A8AA;
+	  display: inline-block;
+	  list-style: none;
+	  margin-bottom: 3px;
+	  padding: 20px 40px;
+	  width: 200px;
+	}
+
+	.btn {
+	  color: #05A8AA;
+	  border: 1px solid #05A8AA;
+	  border-radius: 4px;
+	  font-family: 'Roboto', sans-serif;
+	  font-size: 18px;
+	  font-weight: 700;
+	  margin: 10px 0px;
+	  padding: 20px;
+	  text-decoration: none;
+	  text-transform: uppercase;
+	}
+
+	.btn:hover {
+	  background-color: #05A8AA;
+	  border: 1px solid #05A8AA;
+	  color: #FFF;
+	}
